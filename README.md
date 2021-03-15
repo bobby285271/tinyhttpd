@@ -1,17 +1,49 @@
-  This software is copyright 1999 by J. David Blackstone.  Permission
+## Tiny HTTPd
+
+一个小型 HTTP 服务器，源码来源 [sourceforge](https://sourceforge.net/projects/tinyhttpd/)，作者 J. David Blackstone。由于 Linux 已经支持 `pthread`，[根据此文](https://blog.csdn.net/wenqian1991/article/details/46048987) 做了一些修改，后续迭代仅为个人学习需要。
+
+### 部署与测试
+
+请确保 `perl-cgi` 和基本的开发工具已经安装，以 Arch Linux 为例：
+
+```
+# pacman -S perl-cgi base-devel
+```
+
+接下来进行编译：
+
+```
+$ make
+```
+
+启动 HTTP 服务器，请确保你在提交表单后能看到你所填写的颜色：
+
+```
+$ ./httpd
+```
+
+特别地，如果你是 NixOS 用户，可以使用 `nix-shell`：
+
+```
+$ nix-shell -p perl -p perlPackages.CGI --run ./httpd
+```
+
+### 原自述文件
+
+This software is copyright 1999 by J. David Blackstone.  Permission
 is granted to redistribute and modify this software under the terms of
 the GNU General Public License, available at http://www.gnu.org/ .
 
-  If you use this software or examine the code, I would appreciate
+If you use this software or examine the code, I would appreciate
 knowing and would be overjoyed to hear about it at
 jdavidb@sourceforge.net .
 
-  This software is not production quality.  It comes with no warranty
+This software is not production quality.  It comes with no warranty
 of any kind, not even an implied warranty of fitness for a particular
 purpose.  I am not responsible for the damage that will likely result
 if you use this software on your computer system.
 
-  I wrote this webserver for an assignment in my networking class in
+I wrote this webserver for an assignment in my networking class in
 1999.  We were told that at a bare minimum the server had to serve
 pages, and told that we would get extra credit for doing "extras."
 Perl had introduced me to a whole lot of UNIX functionality (I learned
@@ -20,21 +52,21 @@ calls plus O'Reilly's books on CGI and writing web clients in Perl got
 me thinking and I realized I could make my webserver support CGI with
 little trouble.
 
-  Now, if you're a member of the Apache core group, you might not be
+Now, if you're a member of the Apache core group, you might not be
 impressed.  But my professor was blown over.  Try the color.cgi sample
 script and type in "chartreuse."  Made me seem smarter than I am, at
 any rate. :)
 
-  Apache it's not.  But I do hope that this program is a good
+Apache it's not.  But I do hope that this program is a good
 educational tool for those interested in http/socket programming, as
 well as UNIX system calls.  (There's some textbook uses of pipes,
 environment variables, forks, and so on.)
 
-  One last thing: if you look at my webserver or (are you out of
+One last thing: if you look at my webserver or (are you out of
 mind?!?) use it, I would just be overjoyed to hear about it.  Please
 email me.  I probably won't really be releasing major updates, but if
 I help you learn something, I'd love to know!
 
-  Happy hacking!
+Happy hacking!
 
-                                   J. David Blackstone
+J. David Blackstone
